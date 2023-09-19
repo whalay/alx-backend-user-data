@@ -14,14 +14,12 @@ import os
 app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
-auth = None
 auth = getenv('AUTH_TYPE')
 
 if auth == 'basic_auth':
     auth = BasicAuth()
 else:
     auth = Auth()
-
 
 @app.before_request
 def before_request():
