@@ -21,12 +21,12 @@ if auth == 'basic_auth':
 else:
     auth = Auth()
 
+
 @app.before_request
 def before_request():
     """execute before each request
     """
     if auth is not None:
-
         excluded_paths = ['/api/v1/status/',
                           '/api/v1/unauthorized/',
                           '/api/v1/forbidden/']
@@ -36,7 +36,6 @@ def before_request():
             if auth.current_user(request) is None:
                 abort(403)
             request.current_user = auth.current_user(request)
-
 
 
 @app.errorhandler(404)
