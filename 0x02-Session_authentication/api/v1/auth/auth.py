@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ This module contains an auth class """
-import re
+import re, os
 from flask import request
 from typing import List, TypeVar
 
@@ -34,3 +34,11 @@ class Auth:
     def current_user(self, request=None) -> TypeVar('User'):
         """ a current user function """
         return None
+
+    def session_cookie(self, request=None):
+        '''self descriptive'''
+        if not request:
+            return None
+
+        session_name = os.getenv("SESSION_NAME")
+        return request.cookies.get(session_name)
