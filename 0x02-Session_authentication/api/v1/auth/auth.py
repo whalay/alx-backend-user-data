@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ This module contains an auth class """
-import re, os
+import re
+import os
 from flask import request
 from typing import List, TypeVar
 
